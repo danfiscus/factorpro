@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-    float factor_this;
+    int factor_this;
     int divided_by, up_to;
     char proceed;
     begin:
@@ -13,12 +13,13 @@ int main()
     up_to = up_to + 1;
     cout << "Next, please enter a number to see it's factors." << '\n';
     cin >> factor_this;
-    for (divided_by=1; divided_by < up_to;)
+    for (divided_by=1; (divided_by < up_to) && (divided_by < factor_this);)
         {
-            if factor_this%divided_by == 0
+            if (factor_this%divided_by == 0)
             {
-                cout << factor_this << " divided by " << divided_by << " is " << (factor_this/divided_by) << '\n'; ++divided_by;
+                cout << factor_this << " divided by " << divided_by << " is " << (factor_this/divided_by) << '\n';
             }
+             ++divided_by;
         }
     cout << "Would you like to calculate more? Y for yes, N for no." << '\n';
     cin >> proceed;
