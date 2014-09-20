@@ -2,11 +2,13 @@
 
 using namespace std;
 
+int factor_this;
+int divided_by, up_to;
+char proceed;
+
 int main()
 {
-    int factor_this;
-    int divided_by, up_to;
-    char proceed;
+
     begin:
     cout << "How many factors do you want listed?" << '\n';
     cin >> up_to;
@@ -25,7 +27,11 @@ int main()
     cin >> proceed;
     if (proceed=='Y' || proceed=='y')
     {
-        goto begin;
+        main();
+    }
+    if (proceed == 'N' || proceed == 'n')
+    {
+        cout << "I feel so, empty.";
     }
     return 0;
 }
