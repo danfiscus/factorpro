@@ -31,7 +31,7 @@ int main()
     }
     if (proceed == 'N' || proceed == 'n')
     {
-        cout << "I feel so, empty.";
+        cout << "I feel so, empty." <<endl;
     }
     return 0;
 }
