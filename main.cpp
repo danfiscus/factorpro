@@ -8,8 +8,6 @@ char proceed;
 
 int main()
 {
-
-    begin:
     cout << "How many factors do you want listed?" << endl;
     cin >> up_to;
     up_to = up_to + 1;
