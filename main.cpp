@@ -26,13 +26,10 @@ int main()
         }
     cout << "Would you like to calculate more? Y for yes, N for no." << endl;
     cin >> proceed;
-    if (proceed=='Y' || proceed=='y')
-    {
-        main();
-    }
     if (proceed == 'N' || proceed == 'n')
     {
         cout << "I feel so, empty." <<endl;
+        return 0;
     }
-    return 0;
+    main();
 }
