@@ -17,7 +17,7 @@ int main()
     {
         how_many == factor_this; //Theorem: the number of factors a number has is less than itself
     }
-    for (int divided_by=1; (how_many!=0)&&(divided_by < factor_this); ++divided_by)
+    for (int divided_by=1; (how_many!=0)&&(divided_by <= factor_this); ++divided_by)
     {
         if (factor_this%divided_by == 0)
         {
