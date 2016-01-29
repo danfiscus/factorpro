@@ -48,5 +48,6 @@ Temporary Items
 *.out
 *.app
 
-#Dan’s magical build thingy of science
+#Dan’s magical build thingies of science
 *.command
+makefile
