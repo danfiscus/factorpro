@@ -39,14 +39,16 @@ int inputconvert(string rawinput) {
     doexit = true;
     cout << "The program will exit at the end of this run." << endl;
   }
-  int length = rawinput.size();
   int result=0;
-  char temp;
   if(!(rawinput=="help"||rawinput=="about"||rawinput=="bill o'reilly"||rawinput=="bill oreilly"||rawinput=="o'reilly"||rawinput=="oreilly"||rawinput=="limit"||rawinput=="exit"))
   {
     //OMG C++ CONVERTS STRINGS TO INTS NOW WITHOUT STUPID ASCII TABLES THAT ONLY WORK ON WINDOWS! WOOHOOOO!
-    string::size_type sz;
-    result = stoi (rawinput,&sz);
+    try{
+          result = stoi (rawinput);
+    }
+    catch(invalid_argument& e){
+      cout << "Error: Invalid input. Did you accidentally enter a non-number character?" << endl;
+    }
   }
   return result;
 }
