@@ -6,4 +6,4 @@ factorpro
 
 Simple program to help me with my math homework.
 
-COPYRIGHT 2014 DAN FISCUS
+Copyright 2014-2016 Dan Fiscus
