@@ -1,12 +1,8 @@
 language: cpp
-compiler:
- - gcc
- - clang
-os:
- - linux
- - osx
+
 script:
     make main
+
 notifications:
   webhooks:
     urls:
@@ -15,20 +11,34 @@ notifications:
     on_failure: always  # options: [always|never|change] default: always
     on_start: never     # options: [always|never|change] default: always
 
-language: cpp
-compiler:
-  - gcc
-  - clang
-install:
-- if [[ "$CXX" = "g++" && "$TRAVIS_OS_NAME" = "linux" ]]; then export CXX="g++-5" CC="gcc-5"; fi
-- if [[ "$CXX" == "clang++" && "$TRAVIS_OS_NAME" = "linux" ]]; then export CXX="clang++-3.8"; fi
-- if [[ "$TRAVIS_OS_NAME" = "linux" ]]; then export CXXFLAGS="-Os -std=c++14"; else export CXXFLAGS=""; fi
-addons:
-  apt:
-    sources:
-    - ubuntu-toolchain-r-test
-    - llvm-toolchain-precise
-    packages:
-    - gcc-5
-    - g++-5
-    - clang-3.8
+
+matrix:
+    include:
+        - os: linux
+          comiler: gcc
+          addons:
+            apt:
+                sources:
+                    - ubuntu-toolchain-r-test
+                packages:
+                    - gcc-5
+                    - g++-5
+          install:
+            - export CXX="g++-5" CC="gcc-5"
+            - export CXXFLAGS="-Os -std=c++14"
+        - os: linux
+          compiler: clang
+          addons:
+            apt:
+                sources:
+                    - llvm-toolchain-precise
+                    - ubuntu-toolchain-r-test
+                packages:
+                    - clang-3.8
+          install:
+            - export CXX="clang++-3.8"
+            - export CXXFLAGS="-Os -std=c++14"
+        - os: osx
+          compiler: gcc
+        - os: osx
+          compiler: clang
