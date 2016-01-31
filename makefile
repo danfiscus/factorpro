@@ -2,7 +2,7 @@
 # By Dan Fiscus
 
 # Macros
-CXXFLAGS = -Os
+CXXFLAGS = -Os -std=c++14
 
 # Rules
 all::main
