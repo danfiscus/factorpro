@@ -73,11 +73,7 @@ void dofactors() {
   {
       how_many = factor_this; //Theorem: the number of factors a number has is less than itself
   }
-  int half_of_factor_this;
-  if(factor_this%2==0){half_of_factor_this=factor_this/2;}//If even number, just set equal to half_of_factor_this
-  else{half_of_factor_this=(factor_this+1)/2;}            //If odd number, just add 1 before dividing, to ensure integer result
-  cout << "half_of_factor_this=" << half_of_factor_this << endl;
-  for (int divided_by=1; (how_many!=0)&&(divided_by <= factor_this); ++divided_by)
+  for (int divided_by=1; (how_many!=0)&&(divided_by <= factor_this)&&(divided_by<=factor_this/divided_by); ++divided_by)
   {
       if (factor_this%divided_by == 0)
       {
