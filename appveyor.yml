@@ -1,0 +1,7 @@
+version: 1.0.{build}
+os:
+- Windows Server 2012 R2
+- Default Azure
+- Visual Studio 2015 RC
+build:
+  verbosity: minimal
