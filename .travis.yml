@@ -4,6 +4,7 @@ script:
     make main
 
 notifications:
+  email: false
   webhooks:
     urls:
       https://webhooks.gitter.im/e/e9581bd95014ca2f764f
