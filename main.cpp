@@ -20,7 +20,8 @@ void about();
 int main()
 {
   string rawinput;
-    cout << "Welcome to Factor Pro. To factor a number, simply enter the number at the prompt. To limit the output to a certain number of factors, type \"limit\" (without quotes) when prompted for a number to factor. If you accidentally enter limit mode, simply type -1 for the number of factors and the program will output all factors. To exit the program, type \"exit\" at any time (without quotes.) To count the number of factors a number has and tell you the count after listing all the factors, type count. To disable count mode, type nocount. The program will finish running before exiting after being given this command. For information about this program, type about. To see this help text again, type help at the main prompt." << endl;
+    cout << "Welcome to Factor Pro!" << endl;
+    helptext();
     do{
     how_many = -1;
     cout << "Please enter a number to see its factors. (Alternatively, you can enter special commands here. For more info, type \"help\" without quotes.)" << endl;
@@ -60,7 +61,7 @@ int inputconvert(string rawinput) {
 }
 
 void helptext() {
-  cout << "Welcome to Factor Pro. To factor a number, simply enter the number at the prompt. To limit the output to a certain number of factors, type \"limit\" (without quotes) when prompted for a number to factor. If you accidentally enter limit mode, simply type -1 for the number of factors and the program will output all factors. To exit the program, type \"exit\" at any time (without quotes.) The program will finish running before exiting after being given this command. For information about this program, type about. To see this help text again, type help at the main prompt." << endl;
+  cout << "How to use Factor Pro: To factor a number, simply enter the number at the prompt.\nTo limit the output to a certain number of factors, type \"limit\" (without quotes)\nwhen prompted for a number to factor. If you accidentally enter limit mode, simply\ntype -1 for the number of factors and the program will output all factors. To exit\nthe program, type \"exit\" at any time (without quotes.) The program will finish\nrunning before exiting after being given this command. For information about this\nprogram, type about. To see this help text again, type help at the main prompt." << endl;
 }
 void about() {
   cout << "Programmers:\nDan Fiscus\nChris King\nSource code available at:\nhttp://www.github.com/danfiscus/factorpro\n";
