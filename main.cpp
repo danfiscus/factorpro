@@ -7,16 +7,20 @@ using namespace std;
 int factor_this;    //The number to factor
 int how_many;       //How many factors the user wants listed (or -1 for all)
 char proceed;       //Whether or not to run the program again
-bool doexit;          //If true, exit the program next time main is finished running
+int factors;        //Tracks the number of factors a number has (caps out if limit mode is on)
+bool doexit;        //If true, exit the program next time main is finished running
+bool dofactorcount; //If true, tracks the number of factors a number has
 int inputconvert(string); //Convert raw string input to int
 void helptext();
 void limitmode();
 void dofactors();
 void about();
+
+
 int main()
 {
   string rawinput;
-    cout << "Welcome to Factor Pro. To factor a number, simply enter the number at the prompt. To limit the output to a certain number of factors, type \"limit\" (without quotes) when prompted for a number to factor. If you accidentally enter limit mode, simply type -1 for the number of factors and the program will output all factors. To exit the program, type \"exit\" at any time (without quotes.) The program will finish running before exiting after being given this command. For information about this program, type about. To see this help text again, type help at the main prompt." << endl;
+    cout << "Welcome to Factor Pro. To factor a number, simply enter the number at the prompt. To limit the output to a certain number of factors, type \"limit\" (without quotes) when prompted for a number to factor. If you accidentally enter limit mode, simply type -1 for the number of factors and the program will output all factors. To exit the program, type \"exit\" at any time (without quotes.) To count the number of factors a number has and tell you the count after listing all the factors, type count. To disable count mode, type nocount. The program will finish running before exiting after being given this command. For information about this program, type about. To see this help text again, type help at the main prompt." << endl;
     do{
     how_many = -1;
     cout << "Please enter a number to see its factors. (Alternatively, you can enter special commands here. For more info, type \"help\" without quotes.)" << endl;
@@ -35,16 +39,18 @@ int inputconvert(string rawinput) {
   if(rawinput=="about"){about();}
   if(rawinput=="bill o'reilly"||rawinput=="bill oreilly"||rawinput=="o'reilly"||rawinput=="oreilly"){cout << "You already are \"The Factor\"! At least, according to you." << endl;}
   if(rawinput=="limit"){limitmode();}
+  if(rawinput=="count"){cout<<"Count mode enabled. Returning to main prompt."<<endl;dofactorcount=true;}//Tell the user so they know to re enter their number at the prompt and that the mode is persistent
+  if(rawinput=="nocount"){cout<<"Count mode disabled. Returning to main prompt."<<endl;dofactorcount=false;}
   if(rawinput=="exit"){
     doexit = true;
     cout << "The program will exit at the end of this run." << endl;
   }
   int result=0;
-  if(!(rawinput=="help"||rawinput=="about"||rawinput=="bill o'reilly"||rawinput=="bill oreilly"||rawinput=="o'reilly"||rawinput=="oreilly"||rawinput=="limit"||rawinput=="exit"))
+  if(!(rawinput=="help"||rawinput=="about"||rawinput=="bill o'reilly"||rawinput=="bill oreilly"||rawinput=="o'reilly"||rawinput=="oreilly"||rawinput=="limit"||rawinput=="exit"||rawinput=="count"||rawinput=="nocount"))
   {
     //OMG C++ CONVERTS STRINGS TO INTS NOW WITHOUT STUPID ASCII TABLES THAT ONLY WORK ON WINDOWS! WOOHOOOO!
     try{
-          result = stoi (rawinput);
+      result = stoi (rawinput);
     }
     catch(invalid_argument& e){
       cout << "Error: Invalid input. Did you accidentally enter a non-number character?" << endl;
@@ -67,14 +73,20 @@ void dofactors() {
   {
       how_many = factor_this; //Theorem: the number of factors a number has is less than itself
   }
+  int half_of_factor_this;
+  if(factor_this%2==0){half_of_factor_this=factor_this/2;}//If even number, just set equal to half_of_factor_this
+  else{half_of_factor_this=(factor_this+1)/2;}            //If odd number, just add 1 before dividing, to ensure integer result
+  cout << "half_of_factor_this=" << half_of_factor_this << endl;
   for (int divided_by=1; (how_many!=0)&&(divided_by <= factor_this); ++divided_by)
   {
       if (factor_this%divided_by == 0)
       {
           cout << factor_this << " divided by " << divided_by << " is " << (factor_this/divided_by) << endl;
           how_many-=1;
+          if(dofactorcount){factors+=2;}//Theorem: Each output displays two new factors
       }
   }
+  if(dofactorcount){cout << factor_this << " has " << factors << " factors." << endl;}
 }
 
 void limitmode() {
