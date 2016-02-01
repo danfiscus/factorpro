@@ -53,7 +53,7 @@ int inputconvert(string rawinput) {
                 try{
                         result = stoi (rawinput);
                 }
-                catch(invalid_argument& e) {
+                catch(invalid_argument) {
                         cout << "Error: Invalid input. Did you accidentally enter a non-number character?" << endl;
                 }
         }
