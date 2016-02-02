@@ -66,7 +66,7 @@ void helptext() {
 void about() {
         cout << "Programmers:\nDan Fiscus\nChris King\nSource code available at:\nhttp://www.github.com/danfiscus/factorpro\n";
         //Eventually, replace string copyrightsym with a char that holds the actual symbol. Until then...
-        string copyrightsym = "Copyright ";
+        string copyrightsym = "\u00A9";
         cout << copyrightsym << "2014-2016 Dan Fiscus" << endl;
 }
 void dofactors() {
