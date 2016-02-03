@@ -2,6 +2,7 @@
 #include <math.h>
 #include <ctype.h>
 #include <string>
+#include <fstream>
 using namespace std;
 
 int factor_this;    //The number to factor
@@ -15,7 +16,7 @@ void helptext();
 void limitmode();
 void dofactors();
 void about();
-
+void print_dofactor();	//WANDOWS ONLY - Mac/Unix Handles ofstream differently
 
 int main()
 {
@@ -95,4 +96,24 @@ void limitmode() {
         cin >> rawinput;
         factor_this = inputconvert(rawinput);
         dofactors();
+}
+
+void print_dofactors() {
+	ofstream outfile;
+	if (how_many == -1)
+	{
+		how_many = factor_this; //Theorem: the number of factors a number has is less than itself
+	}
+	outfile.open("factors.txt",ios::app);
+	for (int divided_by = 1; (how_many != 0) && (divided_by <= factor_this) && (divided_by <= factor_this / divided_by); ++divided_by)
+	{
+		if (factor_this%divided_by == 0)
+		{
+			outfile << factor_this << " divided by " << divided_by << " is " << (factor_this / divided_by) << endl;
+			how_many -= 1;
+			if (dofactorcount) { factors += 2; }//Theorem: Each output displays two new factors
+		}
+	}
+	if (dofactorcount) { outfile << factor_this << " has " << factors << " factors." << endl; }
+	outfile.close();
 }
